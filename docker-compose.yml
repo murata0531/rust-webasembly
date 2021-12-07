@@ -1,0 +1,38 @@
+version: '3'
+services:
+    db:
+        image: mysql:5.7
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+        ports:
+            - 33008:3308
+        volumes:
+            - ./docker/mysql:/var/lib/mysql
+        container_name: demo_sql
+
+    rust:
+        build:
+            context: .
+            dockerfile: ./docker/rust/Dockerfile
+        environment:
+            USER: root
+            command: cargo watch -x "run" -w src
+        volumes:
+            - .:/app:cached
+        stdin_open: true
+        tty: true
+        depends_on:
+            - db
+        container_name: demo_rust
+
+    node:
+        build:
+            context: .
+            dockerfile: ./docker/node/Dockerfile
+        container_name: node
+        volumes:
+            - .:/app
+        tty: true
+        command: sh -c "cd react-sample && yarn start"
+        ports:
+            - 3000:3000
