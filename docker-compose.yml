@@ -36,3 +36,14 @@ services:
         command: sh -c "cd react-sample && yarn start"
         ports:
             - 3000:3000
+
+    web:
+        build:
+            context: .
+            dockerfile: ./docker/centos/Dockerfile
+        container_name: "centos"
+        ports:
+            - 80:80
+        volumes:
+            - "./html:/var/www/html"
+        privileged: true
