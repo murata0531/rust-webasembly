@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      background-color: rgb(255, 255, 255);
+    }
+  </style>
+</head>
+<body>
+  <span id="container"></span>
+  <h3>数を二倍する</h3>
+  <p>
+    <input type="number" id="num" value="1" step="1" />
+    <input type="button" value="計算" onclick="onClick();" />
+  </p>
+  <p id="outtxt">outtxt</p>
+  <br />
+  <script>
+    function onClick(){
+      let n = document.getElementById("num").value;
+      let x = parseInt(n);
+      fetch('./build/optimized.wasm').then(response =>
+        response.arrayBuffer()
+      ).then(bytes => WebAssembly.instantiate(bytes)).then(results => {
+        instance = results.instance;
+        let y = instance.exports.twice(x);
+        document.getElementById("outtxt").innerHTML = x + "x 2 = " + y;
+      }).catch(console.error);
+    }
+  </script>
+</body>
+</html>
