@@ -10,12 +10,12 @@
 </head>
 <body>
   <span id="container"></span>
-  <h3>数を二倍する</h3>
+  <h3>数を10乗する</h3>
   <p>
     <input type="number" id="num" value="1" step="1" />
     <input type="button" value="計算" onclick="onClick();" />
   </p>
-  <p id="outtxt">outtxt</p>
+  <p id="outtxt"></p>
   <br />
   <script>
     function onClick(){
@@ -26,7 +26,7 @@
       ).then(bytes => WebAssembly.instantiate(bytes)).then(results => {
         instance = results.instance;
         let y = instance.exports.twice(x);
-        document.getElementById("outtxt").innerHTML = x + "x 2 = " + y;
+        document.getElementById("outtxt").innerHTML = x + "の10乗は " + y;
       }).catch(console.error);
     }
   </script>
