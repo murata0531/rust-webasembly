@@ -5,5 +5,5 @@ export function add(a: i32, b: i32): i32 {
 }
 
 export function twice(x: i32) : i32 {
-  return x * 2;
+  return x ** 10;
 }
