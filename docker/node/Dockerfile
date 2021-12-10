@@ -1,4 +1,4 @@
-FROM node:16-buster
+FROM node:latest
 
 RUN mkdir /app
 WORKDIR /app
