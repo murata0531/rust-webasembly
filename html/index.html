@@ -17,6 +17,12 @@
   </p>
   <p id="outtxt"></p>
   <br />
+  <p>
+    <input type="number" id="num2" value="1" step="2" />
+    <input type="button" value="計算" onclick="onClick2();" />
+  </p>
+  <p id="outtxt2"></p>
+  <br />
   <script>
     function onClick(){
       let n = document.getElementById("num").value;
@@ -28,6 +34,13 @@
         let y = instance.exports.twice(x);
         document.getElementById("outtxt").innerHTML = x + "の10乗は " + y;
       }).catch(console.error);
+    }
+
+    function onClick2(){
+        let n = document.getElementById("num2").value;
+        let x = parseInt(n);
+        let y = x ** 10;
+        document.getElementById("outtxt2").innerHTML = x + "の10乗は " + y;
     }
   </script>
 </body>
