@@ -31,11 +31,16 @@ $ docker-compose exec rust bash
 ```
 
 ```
+nodeコンテナ：ここでNodeを動かしている
+$ docker-compose exec node bash
+```
+
+```
 dbコンテナ：ここでmysqlを動かしている
 $ docker-compose exec db bash
 ```
 
-構築
+Rustアプリケーション構築
 
 envファイル作成
 ```
@@ -50,6 +55,21 @@ $ docker-compose run --rm rust bash
 bash# cd rustwasm
 
 bash# cargo build --target=wasm32-unknown-unknown --release
+
+```
+
+WebAssemblyアプリケーション構築
+
+``
+$ docker-compose build
+
+$ docker-compose run --rm node bash 
+
+bash# cd html
+
+bash# npm install
+
+bash# npm run asbuild
 
 ```
 
