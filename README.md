@@ -60,7 +60,7 @@ bash# cargo build --target=wasm32-unknown-unknown --release
 
 WebAssemblyアプリケーション構築
 
-``
+```
 $ docker-compose build
 
 $ docker-compose run --rm node bash 
