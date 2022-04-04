@@ -7,11 +7,16 @@ https://hackmd.io/YcGZAX41TN-z-OfNLSUPtA
 
 環境
 
+Rust
+
 Diesel
 
 MySQL
 
-WebAsembly
+AssemblyScript
+
+(React)
+
 
 コンテナ作成
 
